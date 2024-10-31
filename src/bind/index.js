@@ -1,9 +1,10 @@
-
+import "../apply";
 
 Function.prototype.customBind = function (context, ...args) {
-  const fn = this
+	const fn = this;
 
-  return function (...innerArgs) {
-    return fn.apply(context, [...args, ...innerArgs])
-  }
-}
+	// biome-ignore lint/complexity/useArrowFunction: <explanation>
+	return function (...innerArgs) {
+		return fn.customApply(context, [...args, ...innerArgs]);
+	};
+};

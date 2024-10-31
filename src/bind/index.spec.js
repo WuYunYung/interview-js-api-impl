@@ -2,6 +2,21 @@ import { describe, expect, it } from "vitest";
 import "./index";
 
 describe("customBind", () => {
+	it("mdn example", () => {
+		const module = {
+			x: 42,
+			getX: function () {
+				return this?.x;
+			},
+		};
+
+		const unboundGetX = module.getX;
+		expect(unboundGetX()).toBe(undefined);
+
+		const boundGetX = unboundGetX.customBind(module);
+		expect(boundGetX()).toBe(module.x);
+	});
+
 	const foo = {
 		a: "b",
 		c(...args) {
