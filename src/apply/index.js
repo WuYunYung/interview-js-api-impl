@@ -1,11 +1,7 @@
-Function.prototype.customApply = function (context, args) {
-	let innerContext = context;
+import { transformContext } from "../shared/transform-context";
 
-	if (innerContext === null || innerContext === undefined) {
-		innerContext = window;
-	} else {
-		innerContext = Object(context);
-	}
+Function.prototype.customApply = function (context, args) {
+	const innerContext = transformContext(context);
 
 	const key = Symbol("fn");
 

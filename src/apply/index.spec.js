@@ -34,22 +34,4 @@ describe("customCall", () => {
 			"b",
 		]);
 	});
-
-	it("context 异常", () => {
-		const foo = {
-			fn() {
-				return this;
-			},
-		};
-
-		expect(foo.fn.customApply(null)).toBe(window);
-
-		expect(foo.fn.customApply(undefined)).toBe(window);
-
-		expect(foo.fn.customApply("").valueOf()).toBe("");
-
-		expect(foo.fn.customApply(1).valueOf()).toBe(1);
-
-		expect(foo.fn.customApply(true).valueOf()).toBe(true);
-	});
 });
