@@ -1,4 +1,4 @@
-import { transformContext } from "../shared/transform-context";
+import { transformContext } from "../../shared/transform-context";
 
 Function.prototype.customApply = function (context, args) {
 	const innerContext = transformContext(context);
